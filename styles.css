@@ -1,0 +1,81 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .section h3 {
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            margin-right: 10px;
+            font-weight: bold;
+        
+        }
+        .form-group input, .form-group select {
+            padding: 5px;
+            width: 50%;
+            border-radius: 20px;
+        }
+        .button-group {
+            margin-top: 15px;
+        }
+        .button-group button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .button-group button.add, .button-group button.remove {
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+.form-group input[type="number"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 50px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.form-group input[type="number"]+* {
+  margin-left: 5px;
+}
+
+/* Atur tampilan form group untuk beberapa input pada satu baris */
+.form-group input[type="number"]:not(:last-of-type) {
+  margin-right: 10px;
+}
+.form-group input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 50px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.form-group input[type="text"]+* {
+  margin-left: 5px;
+}
+
+/* Atur tampilan form group untuk beberapa input pada satu baris */
+.form-group input[type="text"]:not(:last-of-type) {
+  margin-right: 10px;
+}

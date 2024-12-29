@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Daily Meeting Record</title>
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+    <h2>Engineering Daily Tier 1 Meeting Record</h2>
+
+    <!-- Kehadiran Section -->
+    <div class="section">
+        <h3>Kehadiran</h3>
+        <div class="form-group">
+            <label for="date">Hari, Tgl:</label>
+            <input type="date" id="date" required>
+        </div>
+        <div class="form-group">
+            <label for="shift">Jumlah Personel Absen:</label>
+            <input type="number" id="shift" min="1" required>
+        </div>
+        <div id="personil-container">
+            <div class="form-group">
+                <label for="personil1">Nama Personil 1:</label>
+                <input type="text" id="personil1" required>
+            </div>
+        </div>
+        <div class="button-group">
+            <button type="button" class="add" onclick="addPersonil()">+</button>
+            <button type="button" class="remove" onclick="removePersonil()"> — </button>
+        </div>
+    </div>
+
+    <!-- Steam Boiler Area -->
+    <div class="section">
+        <h3>Steam Boiler Area</h3>
+        <div class="form-group">
+            <label for="boiler1">Steam Boiler No.1:</label>
+            <select id="boiler1">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="boiler1_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="boiler2">Steam Boiler No.2:</label>
+            <select id="boiler2">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="boiler2_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="boiler3">Steam Boiler No.3:</label>
+            <select id="boiler3">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="boiler3_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="boiler4">Steam Boiler No.4:</label>
+            <select id="boiler4">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="boiler4_issues" placeholder="Issue (optional)">
+        </div>
+    </div>
+
+    <!-- Compressor Area -->
+    <div class="section">
+        <h3>Compressor Area</h3>
+        <div class="form-group">
+            <label for="compressor1">Compressor ZT250 No.1:</label>
+            <select id="compressor1">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="compressor1_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="compressor2">Compressor ZT250 No.2:</label>
+            <select id="compressor2">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="compressor2_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="compressor3">Compressor ZT75 No.1:</label>
+            <select id="compressor3">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="compressor3_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="compressor4">Compressor ZT75 No.2:</label>
+            <select id="compressor4">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="compressor4_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="compressor5">Compressor ZT75 vsd No.3:</label>
+            <select id="compressor5">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="compressor5_issues" placeholder="Issue (optional)">
+        </div>
+        <div class="form-group">
+            <label for="compressor6">Compressor ZT75 vsd No.4:</label>
+            <select id="compressor6">
+                <option value="Running">Running</option>
+                <option value="Standby">Standby</option>
+            </select>
+            <input type="text" id="compressor6_issues" placeholder="Issue (optional)">
+        </div>
+    </div>
+
+    <!-- Stock Bahan Bakar -->
+    <div class="section">
+        <h3>Stock Bahan Bakar</h3>
+        <div class="form-group">
+            <label for="fuel1">Residu Tank 1:</label>
+            <input type="number" id="fuel1" min="0" max="100" required>% 
+        </div>
+        <div class="form-group">
+            <label for="fuel2">Residu Tank 2:</label>
+            <input type="number" id="fuel2" min="0" max="100" required>% 
+        </div>
+        <div class="form-group">
+            <label for="fuel3">Residu Tank 3:</label>
+            <input type="number" id="fuel3" min="0" max="100" required>% 
+        </div>
+        <div class="form-group">
+            <label for="fuel4">Solar Tank:</label>
+            <input type="number" id="fuel4" min="0" max="100" required>% 
+        </div>
+        <div class="form-group">
+            <label for="fuel5">Solar Daily Tank 1:</label>
+            <input type="number" id="fuel5" min="0" required> L
+        </div>
+        <div class="form-group">
+            <label for="fuel6">Solar Daily Tank 2:</label>
+            <input type="number" id="fuel6" min="0" required> L
+        </div>
+        <div class="form-group">
+            <label for="fuel7">Residu Daily tank:</label>
+            <input type="number" id="fuel7" min="0" max="100" required>% 
+        </div>
+        <div class="form-group">
+            <label for="fuel8">Nitrogen Tank:</label>
+            <input type="number" id="fuel8_volume" min="0" required> L /
+            <input type="number" id="fuel8_pressure" min="0" required> bar
+        </div>
+    </div>
+
+    <!-- Stock Tabung Gas -->
+    <div class="section">
+        <h3>Stock Tabung Gas</h3>
+        <div class="form-group">
+            <label for="gas1">O²:</label>
+            <input type="number" id="gas1" min="0" required> Tb
+        </div>
+        <div class="form-group">
+            <label for="gas2">LPG :</label>
+            <input type="number" id="gas2" min="0" required> Tb
+        </div>
+        <div class="form-group">
+            <label for="gas3">Acetylene:</label>
+            <input type="number" id="gas3" min="0" required> Tb
+        </div>
+        <div class="form-group">
+            <label for="gas4">Argon:</label>
+            <input type="number" id="gas4" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="gas5">CO²:</label>
+          <input type="number" id="gas5" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="gas6">Freon:</label>
+          <input type="number" id="gas6" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="gas7">N²:</label>
+          <input type="number" id="gas7" min="0" required> Tb
+        </div>
+        
+        
+    </div>
+
+
+    <!-- Stock Chemical -->
+    <div class="section">
+        <h3>Stock Chemical</h3>
+        <div class="form-group">
+            <label for="chem1">B3:</label>
+            <input type="number" id="chem1" min="0" required> Tb
+        </div>
+        <div class="form-group">
+            <label for="chem2">B4 :</label>
+            <input type="number" id="chem2" min="0" required> Tb
+        </div>
+        <div class="form-group">
+            <label for="chem3">B5:</label>
+            <input type="number" id="chem3" min="0" required> Tb
+        </div>
+        <div class="form-group">
+            <label for="chem4">FS:</label>
+            <input type="number" id="chem4" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="chem5">SRTF:</label>
+          <input type="number" id="chem5" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="chem6">CHWT:</label>
+          <input type="number" id="chem6" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="chem7">SBN:</label>
+          <input type="number" id="chem7" min="0" required> Tb
+        </div>
+        <div class="form-group">
+          <label for="chem8">Antiscalant:</label>
+          <input type="number" id="chem8" min="0" required> Tb
+        </div>        
+        <div class="form-group">
+          <label for="chem9">Biotreat:</label>
+          <input type="number" id="chem9" min="0" required> Tb
+        </div>
+    </div>
+
+    <!-- Activity Section -->
+    <div class="section">
+        <h3>Activity</h3>
+        <div id="activity-container">
+            <div class="form-group">
+                <label for="activity1">Activity 1:</label>
+                <input type="text" id="activity1" required>
+            </div>
+        </div>
+        <div class="button-group">
+            <button type="button" class="add" onclick="addActivity()">+</button>
+            <button type="button" class="remove" onclick="removeActivity()">—</button>
+        </div>
+    </div>
+
+    <!-- Copy to Clipboard -->
+    <div class="button-group">
+        <button id="copy-button">Copy to Clipboard</button>
+    </div>
+<script src="script.js"></script>
+
+</body>
+</html>
