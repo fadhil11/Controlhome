@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontrol Arduino</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Kontrol Lampu ESP32</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="text-center">
-    <h1 class="text-3xl font-bold mb-4">Kontrol Arduino</h1>
-    <button onclick="controlArduino('/nyala')" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Nyalakan</button>
-    <button onclick="controlArduino('/mati')" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-4">Matikan</button>
-    <p id="status" class="text-gray-700 mt-4">Status: Tidak Diketahui</p>
-  </div>
+<body class="bg-gray-100 text-center p-8">
+
+  <h1 class="text-4xl font-bold mb-4 text-blue-500">Kontrol Lampu ESP32</h1>
+  
+  <p id="status" class="text-xl text-gray-700 mb-6">Status: Tidak Diketahui</p>
+  
+  <button onclick="fetch('/nyala')" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none">Nyalakan</button>
+  <button onclick="fetch('/mati')" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none">Matikan</button>
+  
   <script>
-    async function controlArduino(command) {
-      const response = await fetch(command);
-      const status = await response.text();
-      document.getElementById('status').innerText = `Status: ${status}`;
+    function updateStatus() {
+      fetch('/status')
+        .then(response => response.text())
+        .then(data => document.getElementById('status').innerText = 'Status: ' + data);
     }
+    setInterval(updateStatus, 1000); // Update status setiap 1 detik
   </script>
 </body>
 </html>
