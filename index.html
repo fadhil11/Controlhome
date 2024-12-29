@@ -22,27 +22,3 @@
   </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontrol Arduino</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="text-center">
-    <h1 class="text-3xl font-bold mb-4">Kontrol Arduino</h1>
-    <button onclick="controlArduino('/nyala')" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Nyalakan</button>
-    <button onclick="controlArduino('/mati')" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-4">Matikan</button>
-    <p id="status" class="text-gray-700 mt-4">Status: Tidak Diketahui</p>
-  </div>
-  <script>
-    async function controlArduino(command) {
-      const response = await fetch(command);
-      const status = await response.text();
-      document.getElementById('status').innerText = `Status: ${status}`;
-    }
-  </script>
-</body>
-</html>
