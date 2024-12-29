@@ -12,16 +12,40 @@
   
   <p id="status" class="text-xl text-gray-700 mb-6">Status: Tidak Diketahui</p>
   
-  <button onclick="fetch('/nyala')" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none">Nyalakan</button>
-  <button onclick="fetch('/mati')" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none">Matikan</button>
+  <button id="nyalaButton" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none">Nyalakan</button>
+  <button id="matiButton" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none">Matikan</button>
   
   <script>
-    function updateStatus() {
+    // Fungsi untuk mengirim permintaan fetch
+    function controlLampu(endpoint) {
+      fetch(endpoint)
+        .then(response => response.text())
+        .then(data => updateStatus(data))
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Fungsi untuk memperbarui status lampu di halaman
+    function updateStatus(status) {
+      document.getElementById('status').innerText = 'Status: ' + status;
+    }
+
+    // Menangani klik tombol Nyalakan dan Matikan tanpa reload halaman
+    document.getElementById('nyalaButton').addEventListener('click', function(event) {
+      event.preventDefault(); // Mencegah reload halaman
+      controlLampu('/nyala');
+    });
+
+    document.getElementById('matiButton').addEventListener('click', function(event) {
+      event.preventDefault(); // Mencegah reload halaman
+      controlLampu('/mati');
+    });
+
+    // Update status setiap detik
+    setInterval(function() {
       fetch('/status')
         .then(response => response.text())
-        .then(data => document.getElementById('status').innerText = 'Status: ' + data);
-    }
-    setInterval(updateStatus, 1000); // Update status setiap 1 detik
+        .then(data => updateStatus(data));
+    }, 1000); // Update status setiap 1 detik
   </script>
 </body>
 </html>
